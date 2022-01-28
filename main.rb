@@ -45,7 +45,9 @@ puts nil
 #gregs_state = [back, top_right, bottom_right, bottom_left, top_left]
 
 gregs_state = ["green", "joker", "blue", "red", "orange"] #debugging mode
-gregs_state_reset = gregs_state
+#gregs_state_reset = gregs_state
+gregs_state_reset = ["green", "joker", "blue", "red", "orange"] #fix the reset code
+
 p gregs_state #print wordier
 
 while gregs_state != gregs_target
@@ -59,16 +61,22 @@ while gregs_state != gregs_target
     puts "Input"
     move_input = gets.chomp
     if move_input == "tl"
-      gregs_state[0], gregs_state[2], gregs_state[4]  = 
-      gregs_state[2], gregs_state[4], gregs_state[0]
-    else
-      gregs_state[0], gregs_state[1], gregs_state[3]  = 
-      gregs_state[3], gregs_state[0], gregs_state[1]
+      gregs_state[2], gregs_state[4], gregs_state[0]  = 
+      gregs_state[0], gregs_state[2], gregs_state[4]
+    elsif move_input == "tr"
+      gregs_state[3], gregs_state[0], gregs_state[1]  = 
+      gregs_state[0], gregs_state[1], gregs_state[3]
     end
-  puts nil
-  puts "State #{gregs_state}"
-  puts "Target #{gregs_target}"
+    puts nil
+    puts "Original #{gregs_state_reset}"
+    puts "State #{gregs_state}"
+    puts "Target #{gregs_target}"
   end
+  puts "What is happening with reset"
   gregs_state = gregs_state_reset
   p "position reset to #{gregs_state}"
 end
+
+#What should I have? 
+#tell me if the ring is in the right order
+#tell me if i have two in correct positions
